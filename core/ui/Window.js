@@ -597,8 +597,6 @@
         addTab("programs", "Programs", ui.ProgramsTab);
         //addTab("performance", "Performance", ui.PerformanceTab);
 
-        this.selectTab("trace");
-
         window.addEventListener("beforeunload", function () {
             for (var n in self.windows) {
                 var w = self.windows[n];
@@ -609,7 +607,7 @@
         }, false);
 
         gli.host.setTimeout(function () {
-            self.selectTab("trace", true);
+            self.selectTab(gli.settings.session.tabSelection || "trace", true);
         }, 0);
     };
 
@@ -649,6 +647,9 @@
         if (tab.refresh) {
             tab.refresh();
         }
+
+        gli.settings.session.tabSelection = name;
+        gli.settings.save();
     };
 
     Window.prototype.setActiveVersion = function (version) {

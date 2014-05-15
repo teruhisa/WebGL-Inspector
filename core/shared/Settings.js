@@ -19,7 +19,8 @@
             hudPopupHeight: 500,
             traceSplitter: 400,
             textureSplitter: 240,
-            counterToggles: {}
+            counterToggles: {},
+            tabSelection: null
         };
 
         this.load();
